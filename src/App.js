@@ -1,5 +1,9 @@
 import React from "react"
+import DragonList from './Pages/DragonList/DragonList'
+
 function App() {
-  return <h1> Desafio Sicredi </h1>
+
+  return <DragonList />
+
 }
 export default App
