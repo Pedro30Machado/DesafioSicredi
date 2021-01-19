@@ -1,5 +1,5 @@
 import * as dragonTypes from './types'
-import uuidv4 from 'uuid/v4'
+import uuidv4 from '../../../package.json/uuid'
 
 function reducer(state, action) {
     switch (action.type) {
