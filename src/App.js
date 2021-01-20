@@ -1,14 +1,12 @@
-import React from "react"
-import Provider from './Pages/GlobalStates/Provider'
-import DragonList from './Pages/DragonList/DragonList'
+import React from "react";
+import Provider from "./Pages/GlobalStates/Provider";
+import DragonPage from "./Pages/DragonPage";
 
 function App() {
-
-  return (
-    <Provider>
-      <DragonPage />
-    </Provider>
-  )
-
+	return (
+		<Provider>
+			<DragonPage />
+		</Provider>
+	);
 }
-export default App
+export default App;
