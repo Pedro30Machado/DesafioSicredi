@@ -11,13 +11,15 @@ export default function DragonTableList({ list }) {
 				</tr>
 			</thead>
 			<tbody>
-				{list.map((dragon) => (
-					<tr>
-						<td>{dragon.name}</td>
-						<td>{dragon.type}</td>
-						<td>{dragon.createdAt}</td>
-					</tr>
-				))}
+				{list.map((dragon) => {
+					return (
+						<tr>
+							<td>{dragon.name}</td>
+							<td>{dragon.type}</td>
+							<td>{dragon.createdAt}</td>
+						</tr>
+					);
+				})}
 			</tbody>
 		</table>
 	);
