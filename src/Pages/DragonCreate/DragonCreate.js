@@ -12,22 +12,23 @@ export default function CreateDragon() {
 		console.log(dragons);
 	}, [dragons]);
 
-	const formik = useFormik({
+	const {
+		getFieldProps,
+		touched,
+		errors,
+		isValid,
+		handleSubmit,
+	} = useFormik({
 		initialValues: {
 			name: "",
 			type: "",
 			createdAt: "",
 		},
-		validationSchemaN: yup.object({
-			name: yup.string().required("Insira o nome do dragão."),
-		}),
-		validationSchemaT: yup.object({
-			type: yup.string().required("Insira o tipo do dragão."),
-		}),
+
 		validationSchema: yup.object({
 			createdAt: yup
 				.string()
-				.required("Insira a data de criação do dragão."),
+				.required("Insira todas as informações do dragão."),
 		}),
 		onSubmit: (values, formikBag) => {
 			dispatchDragons(
@@ -50,46 +51,40 @@ export default function CreateDragon() {
 	}, []);
 
 	return (
-		<form className={styles.container} onSubmit={formik.handleSubmit}>
+		<form className={styles.container} onSubmit={handleSubmit}>
 			<input
 				className={styles.input}
 				type="text"
 				autocomplete="off"
 				placeholder="Nome do Dragão"
 				ref={inputValues}
-				{...formik.getFieldProps("name")}
+				{...getFieldProps("name")}
 			/>
-			{formik.touched.name && formik.errors.name ? (
-				<small className={styles.error}>{formik.errors.name}</small>
-			) : null}
 
 			<input
 				className={styles.input}
 				type="text"
 				autocomplete="off"
 				placeholder="Tipo do Dragão"
-				ref={inputValues}
-				{...formik.getFieldProps("type")}
+				{...getFieldProps("type")}
 			/>
-			{formik.touched.type && formik.errors.type ? (
-				<small className={styles.error}>{formik.errors.type}</small>
-			) : null}
 
 			<input
 				className={styles.input}
 				type="text"
 				autocomplete="off"
 				placeholder="Data de Criação"
-				ref={inputValues}
-				{...formik.getFieldProps("createdAt")}
+				{...getFieldProps("createdAt")}
 			/>
-			{formik.touched.createdAt && formik.errors.createdAt ? (
-				<small className={styles.error}>
-					{formik.errors.createdAt}
-				</small>
+			{touched.createdAt && errors.createdAt ? (
+				<small className={styles.error}>{errors.createdAt}</small>
 			) : null}
 
-			<button className={styles.button} type="submit">
+			<button
+				className={styles.button}
+				type="submit"
+				disabled={!isValid}
+			>
 				{" "}
 				Criar Dragão{" "}
 			</button>

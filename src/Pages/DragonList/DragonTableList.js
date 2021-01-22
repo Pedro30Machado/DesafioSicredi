@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./DL.module.css";
 
 export default function DragonTableList({ list }) {
 	return (
-		<table>
+		<table className={styles.table}>
 			<thead>
 				<tr>
 					<th> Nome </th>
