@@ -5,17 +5,15 @@ import sort from "./sort";
 
 export default function DragonList() {
 	const [dragon, setDragon] = useState([]);
-
-	async function fetchDragons() {
+	async function getDragons() {
 		axios.get(
 			"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon"
 		).then((res) => {
-			// eslint-disable-next-line no-restricted-globals
 			setDragon(sort(res.data, "name", "a"));
 		});
 	}
 	useEffect(() => {
-		fetchDragons();
+		getDragons();
 	});
 	return <DragonTableList list={dragon} />;
 }

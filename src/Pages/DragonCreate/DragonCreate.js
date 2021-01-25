@@ -71,7 +71,7 @@ export default function CreateDragon() {
 
 			<input
 				className={styles.input}
-				type="text"
+				type="date"
 				autocomplete="off"
 				placeholder="Data de Criação"
 				{...getFieldProps("createdAt")}

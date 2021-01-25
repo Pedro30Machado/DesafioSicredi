@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function EditDragon() {
+export default function DragonEdit() {
 	return <div></div>;
 }

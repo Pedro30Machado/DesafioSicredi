@@ -1,5 +1,6 @@
 .table {
-	position: fixed;
-	top: 180px;
+	position: relative;
+	align-content: center;
 	left: 0;
+	place-content: center;
 }
