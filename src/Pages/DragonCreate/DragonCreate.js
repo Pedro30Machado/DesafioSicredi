@@ -5,7 +5,7 @@ import * as dragonsActions from "../GlobalStates/actions";
 import * as yup from "yup";
 import styles from "./DC.module.css";
 
-export default function CreateDragon() {
+export default function DragonCreate() {
 	const { dragons, dispatchDragons } = useContext(Context);
 
 	useEffect(() => {
@@ -30,6 +30,7 @@ export default function CreateDragon() {
 				.string()
 				.required("Insira todas as informações do dragão."),
 		}),
+
 		onSubmit: (values, formikBag) => {
 			dispatchDragons(
 				dragonsActions.addDragon(
@@ -85,9 +86,75 @@ export default function CreateDragon() {
 				type="submit"
 				disabled={!isValid}
 			>
-				{" "}
-				Criar Dragão{" "}
+				Criar Dragão
 			</button>
 		</form>
 	);
 }
+
+/*
+
+import React from "react";
+import axios from "axios";
+import styles from "./DC.module.css";
+import getDragons from "../DragonList/DragonList";
+
+export default class DragonCreate extends React.Component {
+	
+	state = {
+		name: "",
+		type: "",
+	};
+
+	handleChange = (event) => {
+		this.setState({ name: event.target.value, type: event.target.value });
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+
+		const dragon = {
+			name: this.state.name,
+			type: this.state.type,
+		};
+
+		axios.post(
+			"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon",
+			{ dragon }
+		).then((res) => {
+			getDragons(res.data);
+		});
+	};
+
+	render() {
+		return (
+			<div className={styles.container}>
+				<form onSubmit={this.handleSubmit}>
+					<input
+						className={styles.input}
+						type="name"
+						autocomplete="off"
+						placeholder="Nome do Dragão"
+						onChange={this.handleChange}
+						onfocus="this.value='';"
+					/>
+
+					<input
+						className={styles.input}
+						type="type"
+						autocomplete="off"
+						placeholder="Tipo do Dragão"
+						onChange={this.handleChange}
+						onfocus="this.value='';"
+					/>
+
+					<button className={styles.button} type="submit">
+						{" "}
+						Criar Dragão{" "}
+					</button>
+				</form>
+			</div>
+		);
+	}
+}
+*/
