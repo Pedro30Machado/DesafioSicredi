@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { useFormik } from "formik";
 import Context from "../GlobalStates/Context";
-import * as dragonsActions from "../GlobalStates/actions";
 import * as yup from "yup";
 import styles from "./DC.module.css";
+import axios from "axios";
 
 export default function DragonCreate() {
 	const { dragons, dispatchDragons } = useContext(Context);
@@ -22,26 +22,30 @@ export default function DragonCreate() {
 		initialValues: {
 			name: "",
 			type: "",
-			createdAt: "",
 		},
 
 		validationSchema: yup.object({
-			createdAt: yup
+			name: yup
 				.string()
 				.required("Insira todas as informações do dragão."),
 		}),
 
 		onSubmit: (values, formikBag) => {
-			dispatchDragons(
-				dragonsActions.addDragon(
-					values.name,
-					values.type,
-					values.createdAt
-				)
-			);
+			axios.post(
+				"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon",
+				{ name: values.name, type: values.type }
+			).then((res) => {
+				axios.get(
+					"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon"
+				).then((res) => {
+					dispatchDragons({
+						type: "FETCH_DRAGONS",
+						payload: res.data,
+					});
+				});
+			});
 			formikBag.setFieldValue("name", "", false);
 			formikBag.setFieldValue("type", "", false);
-			formikBag.setFieldValue("createdAt", "", false);
 		},
 	});
 
@@ -69,16 +73,8 @@ export default function DragonCreate() {
 				placeholder="Tipo do Dragão"
 				{...getFieldProps("type")}
 			/>
-
-			<input
-				className={styles.input}
-				type="date"
-				autocomplete="off"
-				placeholder="Data de Criação"
-				{...getFieldProps("createdAt")}
-			/>
-			{touched.createdAt && errors.createdAt ? (
-				<small className={styles.error}>{errors.createdAt}</small>
+			{touched.name && errors.name ? (
+				<small className={styles.error}>{errors.name}</small>
 			) : null}
 
 			<button
@@ -157,4 +153,5 @@ export default class DragonCreate extends React.Component {
 		);
 	}
 }
+
 */

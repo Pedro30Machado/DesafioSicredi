@@ -1,6 +1,13 @@
-.table {
-	position: relative;
-	align-content: center;
-	left: 0;
-	place-content: center;
+.container {
+	padding: 15px 30px;
+	font-size: 20px;
+	width: 510px;
+}
+.details {
+	padding-bottom: 15px;
+	cursor: pointer;
+}
+.innerContent {
+	padding-left: 27px;
+	padding-top: 10px;
 }

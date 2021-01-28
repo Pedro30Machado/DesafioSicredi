@@ -1,12 +1,11 @@
 import * as dragonTypes from "./types";
 
-export function addDragon(name, type, createdAt) {
+export function addDragon(name, type) {
 	return {
 		type: dragonTypes.ADD_DRAGON,
 		payload: {
 			name: name,
 			type: type,
-			createdAt: createdAt,
 		},
 	};
 }
