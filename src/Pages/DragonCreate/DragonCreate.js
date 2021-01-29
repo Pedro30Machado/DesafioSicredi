@@ -34,7 +34,7 @@ export default function DragonCreate() {
 			axios.post(
 				"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon",
 				{ name: values.name, type: values.type }
-			).then((res) => {
+			).then(() => {
 				axios.get(
 					"http://5c4b2a47aa8ee500142b4887.mockapi.io/api/v1/dragon"
 				).then((res) => {
