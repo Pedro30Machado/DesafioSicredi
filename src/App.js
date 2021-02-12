@@ -1,12 +1,17 @@
 import React from "react";
-import Provider from "./Pages/GlobalStates/Provider";
-import DragonPage from "./Pages/DragonPage";
+import Navbar from "./components/navbar";
+import Rotas from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
 	return (
-		<Provider>
-			<DragonPage />
-		</Provider>
+		<BrowserRouter>
+			<div>
+				<Navbar />
+				<Rotas />
+			</div>
+		</BrowserRouter>
 	);
 }
+
 export default App;

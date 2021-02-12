@@ -1,0 +1,33 @@
+.field {
+	border: none;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	padding: 1rem;
+	border-bottom: solid;
+	border-bottom-color: #5e089e;
+	margin-top: 2%;
+	margin-left: 32%;
+	font-size: 1.2rem;
+	width: 30%;
+}
+.h1 {
+	margin-top: 5%;
+	margin-left: 45%;
+}
+.button {
+	margin-top: 3%;
+	margin-left: 41%;
+	width: 200px;
+	height: 30px;
+	border-radius: 15px;
+	border-color: #5e089e;
+	background-color: #5e089e;
+	cursor: pointer;
+	color: white;
+}
+.error {
+	color: #e8383b;
+	margin-left: 32%;
+}
