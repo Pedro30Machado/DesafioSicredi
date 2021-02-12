@@ -7,6 +7,25 @@ summary {
 	width: 28%;
 	font-size: 25px;
 }
+summary::-webkit-details-marker {
+  display: none
+}
+summary:after {
+  background: #5e089e; 
+  content: "→"; 
+  color: #fff; 
+  float: left;  
+  font-weight: bold; 
+  padding: 0; 
+  text-align: center; 
+  width: 28px;
+  left: 20px;
+  margin-right: 10px;
+	border-radius: 50%;
+}
+details[open] summary:after {
+  content: "↓";
+}
 details {
 	padding: 20px 0px 20px 20px;
 }

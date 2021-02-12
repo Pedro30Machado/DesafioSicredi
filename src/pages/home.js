@@ -32,7 +32,6 @@ const Home = (props) => {
 
 	useEffect(() => {
 		props.listar();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
