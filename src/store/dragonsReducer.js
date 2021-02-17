@@ -27,11 +27,12 @@ export const dragonsReducer = (state = ESTADO_INICIAL, action) => {
 			return {
 				...state,
 				dragons: [
-					...state.dragons.filter((dragon) => dragon.id !== id),
+					...state.dragons.filter((dragon) => dragon.id !== action.id),
 					{
-						id: action.data.id,
-						name: action.data.name,
-						type: action.data.type,
+						id: action.id,
+						name: action.dragon.name,
+						type: action.dragon.type,
+						createdAt: action.dragon.createdAt
 					},
 				],
 			};
@@ -84,9 +85,11 @@ export function deletar(id) {
 export function editar(id, dragon) {
 	return (dispatch) => {
 		http.put(`/${id}`, dragon).then((response) => {
+			console.log(response.data)
 			dispatch({
 				type: ACTIONS.UPDATE,
 				dragon: response.data,
+				id: id,
 			});
 		});
 	};

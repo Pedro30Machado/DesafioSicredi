@@ -50,6 +50,7 @@ const Login = () => {
 					<div>
 						<Field
 							name="password"
+							type="password"
 							className={styles.field}
 							placeholder="Password"
 							autoComplete="off"
